@@ -3,8 +3,8 @@ public class GeoArc {
     private int id;
     private int debut;
     private int fin;
-    private int temps;
-    private int distance;
+    private float temps;
+    private float distance;
     private int sens;
 
     public int getId() {
@@ -31,19 +31,19 @@ public class GeoArc {
         this.fin = fin;
     }
 
-    public int getTemps() {
+    public float getTemps() {
         return temps;
     }
 
-    public void setTemps(int temps) {
+    public void setTemps(float temps) {
         this.temps = temps;
     }
 
-    public int getDistance() {
+    public float getDistance() {
         return distance;
     }
 
-    public void setDistance(int distance) {
+    public void setDistance(float distance) {
         this.distance = distance;
     }
 

@@ -40,6 +40,8 @@ public class Database {
         return geoPoint;
     }
 
+
+
     public ArrayList<GeoPoint> getAllData() {
         String query = "SELECT * FROM GEO_POINT";
         ArrayList<GeoPoint> GeoArray = new ArrayList<GeoPoint>();
@@ -60,6 +62,48 @@ public class Database {
         return GeoArray;
     }
 
+
+
+    public GeoArc getLineArc(int id) {
+        GeoArc geoArc = new GeoArc();
+        try {
+            String query = "SELECT * FROM GEO_ARC WHERE GEO_ARC_ID = " + id;
+            ResultSet m_ResultSet = this.qStatement.executeQuery(query);
+
+            //On récupère les données de la query
+            geoArc.setId(id);
+            geoArc.setDistance(m_ResultSet.getFloat("GEO_ARC_DISTANCE"));
+            geoArc.setDebut(m_ResultSet.getInt("GEO_ARC_DEB"));
+            geoArc.setFin(m_ResultSet.getInt("GEO_ARC_FIN"));
+            geoArc.setTemps(m_ResultSet.getFloat("GEO_ARC_TEMPS"));
+            geoArc.setSens(m_ResultSet.getInt("GEO_ARC_SENS"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return geoArc;
+    }
+
+    public ArrayList<GeoArc> getAllArcData() {
+        String query = "SELECT * FROM GEO_ARC";
+        ArrayList<GeoArc> GeoArcArray = new ArrayList<GeoArc>();
+        try{
+            ResultSet m_ResultSet = this.qStatement.executeQuery(query);
+            for(int i=0;m_ResultSet.next();i++){
+                GeoArc getArc = new GeoArc();
+                getArc.setId(m_ResultSet.getInt("GEO_ARC_ID"));
+                getArc.setDistance(m_ResultSet.getFloat("GEO_ARC_DISTANCE"));
+                getArc.setDebut(m_ResultSet.getInt("GEO_ARC_DEB"));
+                getArc.setFin(m_ResultSet.getInt("GEO_ARC_FIN"));
+                getArc.setTemps(m_ResultSet.getFloat("GEO_ARC_TEMPS"));
+                getArc.setSens(m_ResultSet.getInt("GEO_ARC_SENS"));
+                GeoArcArray.add(getArc);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return GeoArcArray;
+    }
 
     public static void main(String[] args) throws Exception {
 
