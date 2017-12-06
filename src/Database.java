@@ -1,7 +1,7 @@
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DBConnect {
+public class Database {
 
     private Statement qStatement;
 
