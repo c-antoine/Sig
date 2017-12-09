@@ -37,12 +37,14 @@ public class GeoPoint {
         this.ligne = ligne;
     }
 
-    public int getId() {
-
-        return id;
-    }
+    public int getId() { return id; }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString(){
+        return this.nom + " : id(" + this.id + ") , ligne(" + this.ligne + ") , latitude(" + this.latitude + ") , longitude(" + this.longitude+ ")";
     }
 }
