@@ -8,9 +8,9 @@ public class Database {
     public boolean setConnectionToDB() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:8889/makhnoEzap";
+            String url = "jdbc:mysql://localhost:3306/makhnoEzap";
             Connection m_Connection = DriverManager.getConnection(
-                    url, "root", "root");
+                    url, "root", "");
 
             this.qStatement = m_Connection.createStatement();
             return true;
@@ -21,7 +21,7 @@ public class Database {
         }
     }
 
-    public GeoPoint getLineData(int id) {
+    public GeoPoint getLinePointData(int id) {
         GeoPoint geoPoint = new GeoPoint();
         try {
             String query = "SELECT * FROM GEO_POINT WHERE GEO_POI_ID = " + id;
@@ -42,7 +42,7 @@ public class Database {
 
 
 
-    public ArrayList<GeoPoint> getAllData() {
+    public ArrayList<GeoPoint> getAllPointData() {
         String query = "SELECT * FROM GEO_POINT";
         ArrayList<GeoPoint> GeoArray = new ArrayList<GeoPoint>();
         try{
@@ -64,7 +64,7 @@ public class Database {
 
 
 
-    public GeoArc getLineArc(int id) {
+    public GeoArc getLineArcData(int id) {
         GeoArc geoArc = new GeoArc();
         try {
             String query = "SELECT * FROM GEO_ARC WHERE GEO_ARC_ID = " + id;
@@ -105,7 +105,9 @@ public class Database {
         return GeoArcArray;
     }
 
-    public static void main(String[] args) throws Exception {
-
+    public ArrayList<GeoArc> getArcLinkToPoint(GeoPoint point) {
+        //TODO - Faire une requête SQL qui lie le point à l'arc, puis retourne l'ensemble des arcs liés au point sous forme d'arrayList
+        return null;
     }
+
 }
