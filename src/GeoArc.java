@@ -54,4 +54,9 @@ public class GeoArc {
     public void setSens(int sens) {
         this.sens = sens;
     }
+
+    @Override
+    public String toString(){
+        return" id(" + this.id + ") , debut(" + this.debut + ") , fin(" + this.fin + ") , temps(" + this.temps+ "), distance(" + this.distance + "), sens(" + this.sens + ")\n";
+    }
 }
