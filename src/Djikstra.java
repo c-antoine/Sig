@@ -9,6 +9,31 @@ public class Djikstra {
         this.db=db;
     }
 
+    public GeoPoint getDebut() {
+        return debut;
+    }
+
+    public void setDebut(GeoPoint debut) {
+        this.debut = debut;
+    }
+
+    public Database getDb() {
+        return db;
+    }
+
+    public void setDb(Database db) {
+        this.db = db;
+    }
+
+    public GeoPoint getFin() {
+        return fin;
+    }
+
+    public void setFin(GeoPoint fin) {
+        this.fin = fin;
+    }
+
+    //Fonction qui lie le premier arret avec son nom
     public boolean setDebutFromBusStop(String busStopName){
         ArrayList<GeoPoint> allPointData = db.getAllPointData();
         System.out.println("Nombre d'arrêts sur le réseau : "+allPointData.size());
@@ -24,10 +49,16 @@ public class Djikstra {
         return false;
     }
 
+    //Fonction qui retourne une liste d'Arc lié au point
     public ArrayList<GeoArc> getArcLinkedToPoint(GeoPoint point){
-        //TODO - Faire une fonction qui retourne une liste d'Arc lié au point
         ArrayList<GeoArc> allArcData = db.getAllArcData();
-        return allArcData;
+        ArrayList<GeoArc> linkedArcData = new ArrayList<GeoArc>();
+        for(int i=0;allArcData.size()>i;i++){
+            if(allArcData.get(i).getDebut()==point.getId() || allArcData.get(i).getFin()==point.getId()){
+                linkedArcData.add(allArcData.get(i));
+            }
+        }
+        return linkedArcData;
     }
 
 }

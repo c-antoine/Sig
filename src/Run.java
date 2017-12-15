@@ -27,5 +27,8 @@ public class Run {
         }else{
             System.out.println("Impossible de trouver l'arret de bus");
         }
+        ArrayList<GeoArc> arcLinkedToPoint;
+        arcLinkedToPoint=djikstraAlgo.getArcLinkedToPoint(djikstraAlgo.getDebut());
+        System.out.println(arcLinkedToPoint.toString());
     }
 }
